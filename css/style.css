@@ -1,0 +1,11 @@
+.contenedor {
+    display: flex; /* Usar display flex para centrar vertical y horizontalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Establecer la altura al 100% del viewport (ventana del navegador) */
+  }
+  
+  img {
+    max-width: 100%; /* Asegurar que la imagen no sea más grande que el contenedor */
+    max-height: 100%; /* Asegurar que la imagen no sea más alta que el contenedor */
+  }
