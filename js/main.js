@@ -8,11 +8,10 @@ let seguirApostando; //quiere seguir apostando
 function cargaCredito() {
     credito = parseInt(prompt("Cuanto credito desea cargar")); 
     
-
     if(credito === null || Number.isNaN(credito)) {
-        console.log("No cargo credito, presione F5 para cargar");
+        alert("No cargo credito, presione F5 para cargar");
     } else {
-        console.log("Su credito es de: " + credito);
+        alert("Su credito es de: " + credito);
     }  /*verifico que sea un numero y no vacio o una letra*/
 }
 cargaCredito();
@@ -22,29 +21,32 @@ function eligeNumero() {
     numero = parseInt(prompt("Seleccione su numero"));
     apuesta = parseInt(prompt("Cuanto quiere apostar"));
 
-    console.log("Aposto " + apuesta + " por el " + numero);
+    alert("Aposto " + apuesta + " por el " + numero);
 
-    credito -= apuesta;
-    console.log("Queda credito " + credito);
+    if(credito >= 1) {
+        alert("Queda credito " + (credito -= apuesta));
+    } else {
+        alert("No queda mas credito, presione F5 para recargar")
+    }
 }
 eligeNumero();
 
 /* ruleta que saca numero random desde 0 a 38 */
 function ruleta() {
     numeroRuleta = Math.floor(Math.random() * (39 - 0));
-    console.log(numeroRuleta);
+    alert("El numero favorecido es " + numeroRuleta);
 
     if (numeroRuleta == numero){
-        console.log("Ganaste")
-    } else if (numeroRuleta !== numero && credito >= 0) {
+        alert("Ganaste")
+    } else if (numeroRuleta !== numero) {
         seguirApostando = confirm("No tuvo suerte, quiere seguir apostando? Presione OK");
     }
 
-    if(seguirApostando == true) {
+    if(seguirApostando == true && credito > 0) {
         eligeNumero();
         ruleta();
-    } else {
-        console.log("Mejor suerte la proxima");
+    } else if (credito >= 0){
+        alert("Mejor suerte la proxima");
     }
 }
 ruleta();
