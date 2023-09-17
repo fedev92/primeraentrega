@@ -32,22 +32,44 @@ function eligeNumero() {
 eligeNumero();
 
 /* ruleta que saca numero random desde 0 a 38 */
+// function ruleta() {
+//     numeroRuleta = Math.floor(Math.random() * (39 - 0));
+//     alert("El numero favorecido es " + numeroRuleta);
+
+//     if (numeroRuleta == numero){
+//         alert("Ganaste")
+//     } else if (numeroRuleta !== numero) {
+//         seguirApostando = confirm("No tuvo suerte, quiere seguir apostando? Presione OK");
+//     }
+
+//     if(seguirApostando == true && credito > 0) {
+//         eligeNumero();
+//         ruleta();
+//     } else if (credito >= 0){
+//         alert("Mejor suerte la proxima");
+//     }
+// }
+// ruleta(); 
+//entiendo segun los conceptos que vimos que la solucion es la misma. en el while es mas "prolijo", pero las funciones son las mismas. al menos eso entiendo
+
 function ruleta() {
-    numeroRuleta = Math.floor(Math.random() * (39 - 0));
-    alert("El numero favorecido es " + numeroRuleta);
+    while (credito > 0 && seguirApostando) {
+        numeroRuleta = Math.floor(Math.random() * (39 - 0));
+        alert("El número favorecido es " + numeroRuleta);
 
-    if (numeroRuleta == numero){
-        alert("Ganaste")
-    } else if (numeroRuleta !== numero) {
-        seguirApostando = confirm("No tuvo suerte, quiere seguir apostando? Presione OK");
+
+        if (numeroRuleta == numero) {
+            alert("¡Ganaste!");
+            break; //no sabia que el break se podia usar dentro del if
+        } else {
+            seguirApostando = confirm("No tuviste suerte, ¿quieres seguir apostando? Presiona OK");
+        }
     }
 
-    if(seguirApostando == true && credito > 0) {
-        eligeNumero();
-        ruleta();
-    } else if (credito >= 0){
-        alert("Mejor suerte la proxima");
-    }
+
+    if (credito >= 0) {
+        alert("Mejor suerte la próxima");
+    } //agrego las correcciones que me dijiste, no se si tenia que buscar algo parecido, o si querias que lo modifique, pero lo mando como lo pasaste
 }
-ruleta();
 
+//calculo que lo otro esta correcto.
